@@ -4,3 +4,11 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+task :espn_updater => :environment do
+  ESPNScraper.run
+end
+
+task :cbs_updater => :environment do
+  CBSScraper.run
+end
