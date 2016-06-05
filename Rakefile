@@ -12,3 +12,7 @@ end
 task :cbs_updater => :environment do
   CBSScraper.run
 end
+
+task :yahoo_updater => :environment do
+  YahooScraper.run
+end 
