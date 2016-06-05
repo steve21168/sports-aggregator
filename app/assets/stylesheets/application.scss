@@ -54,3 +54,11 @@ of those sections to manage the look and feel of the site. */
     text-align: center;
     background: #eee;
 }
+img.card-img-top.img-fluid.img-limit {
+  height: auto;
+  max-height: 80px;
+}
+
+#league-title {
+  padding-bottom: 20px;
+}

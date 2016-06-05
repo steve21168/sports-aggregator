@@ -6,8 +6,8 @@ class CBSScraper
 
     doc.css('ul li.article-list-stack-item a').each do |link|
       title = link.children.css("h3").first.text.strip
-      link = url + link.attributes["href"].value
-      Article.create(title: title, url: link, league: league_obj)
+      link =  "http://www.cbssports.com" + link.attributes["href"].value
+      Article.create(title: title, url: link, league: league_obj, source: "cbs")
     end
   end
 

@@ -5,9 +5,9 @@ class ESPNScraper
     league_obj = League.find_by(abbreviation: league)
 
     doc.css('.headlines ul li a').each do |headline|
-      link = url + headline.attribute('href').value
+      link = "http://espn.go.com" + headline.attribute('href').value
       title = headline.text
-      Article.create(title: title, url: link, league: league_obj)
+      Article.create(title: title, url: link, league: league_obj, source: "espn")
     end
   end
 

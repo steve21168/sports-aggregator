@@ -6,9 +6,9 @@ class YahooScraper
     league_obj = League.find_by(abbreviation: league)
 
     doc.css('#mediasportstopheadlines a.title')[0..-2].each do |headline|
-      link = url + headline.attribute("href").value
+      link = "http://sports.yahoo.com" + headline.attribute("href").value
       title = headline.children.text
-      Article.create(title: title, url: link, league: league_obj)
+      Article.create(title: title, url: link, league: league_obj, source: "yahoo")
     end
   end
 
