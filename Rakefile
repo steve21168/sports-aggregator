@@ -21,4 +21,5 @@ task :update_all => :environment do
   ESPNScraper.run
   CBSScraper.run
   YahooScraper.run
+  GetBoxscores.run
 end
