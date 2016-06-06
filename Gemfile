@@ -47,6 +47,8 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'letter_opener'
   gem 'dotenv-rails'
+  gem 'capybara'
+  gem 'rspec-rails'
   #gem 'rack-mini-profiler'
 end
 
