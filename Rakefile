@@ -15,4 +15,10 @@ end
 
 task :yahoo_updater => :environment do
   YahooScraper.run
-end 
+end
+
+task :update_all => :environment do
+  ESPNScraper.run
+  CBSScraper.run
+  YahooScraper.run
+end
