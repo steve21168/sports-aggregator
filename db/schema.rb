@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606150509) do
+ActiveRecord::Schema.define(version: 20160606153819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,28 @@ ActiveRecord::Schema.define(version: 20160606150509) do
     t.string   "logo"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "mlb_boxscores", force: :cascade do |t|
+    t.string   "home_team_id"
+    t.string   "away_team_id"
+    t.integer  "home_hits"
+    t.integer  "home_runs"
+    t.integer  "home_errors"
+    t.integer  "away_hits"
+    t.integer  "away_runs"
+    t.integer  "away_errors"
+    t.string   "winning_pitcher"
+    t.string   "winning_pitcher_record"
+    t.string   "losing_pitcher"
+    t.string   "losing_pitcher_record"
+    t.string   "save_pitcher"
+    t.string   "save_pitcher_save_count"
+    t.string   "total_innings"
+    t.string   "duration"
+    t.date     "game_date"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "teams", force: :cascade do |t|

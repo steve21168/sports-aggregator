@@ -28,6 +28,17 @@ class LeaguesController < ApplicationController
     @yahoo_articles = articles.five_most_recent("yahoo")
   end
 
+
+  def mlb_boxscores
+    boxscores =  MlbBoxscore.where(game_date: Date.today - 1.day)
+    outbound_array = []
+    boxscores.each do |box|
+      hash = {boxscore: box, home_team: box.home_team, away_team: box.away_team}
+      outbound_array << hash
+    end
+    render :json => outbound_array
+  end
+
   private
 
   def find_league_object(league)

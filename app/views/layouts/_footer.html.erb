@@ -1,0 +1,42 @@
+<nav class="navbar navbar-light bg-faded navbar-fixed-bottom" id="bottom-nav">
+
+  <div class="nav navbar-nav">
+    <div id='horiz-contain-1'>
+      <div id='horiz-contain-2'>
+        <div class="card-deck-wrapper">
+          <div class="card-deck" id="boxscore-deck">
+          </div><!--end card deck-->
+        </div><!--end card deck wrapper-->
+      </div><!-- end container 2 -->
+    </div><!-- end container 1 -->
+  </div><!--end footer nav-->
+
+
+</nav>
+
+<script>
+$(document).ready(function(){
+  $.ajax({
+    url: '/leagues/mlb/boxscores',
+    dataType: "JSON"
+  }).done(function(response){
+    var html_card_deck = ""
+    var html_new_divs = ""
+    debugger
+      response.forEach(function(game, index){
+        html_card_deck += '<div class="card card-block" style="min-width: 250px" data-toggle="collapse" href="#game' + game.boxscore.id + '" aria-expanded="false" aria-controls="game' + game.boxscore.id + '"><center>' + game.home_team.team_name + ": " + game.boxscore.home_runs + "<br>" + game.away_team.team_name + ": " + game.boxscore.away_runs + "</center></div>"
+        html_new_divs += '<div class="collapse" id="game' + game.boxscore.id + '"><div class="card card-block"><div><table>'
+        html_new_divs += '<tr><td>' + "Teams" + '</td><td>' + "R" + '</td><td>' + "H" + '</td><td>' + "E" + '</td><td></tr>'
+        html_new_divs += '<tr><td>' + game.home_team.team_name + ': </td><td>' + game.boxscore.home_runs+ '</td><td>' + game.boxscore.home_hits + '</td><td>' + game.boxscore.home_errors + '</td><td></tr>'
+        html_new_divs += '<tr><td>' + game.away_team.team_name + ': </td><td>' + game.boxscore.away_runs+ '</td><td>' + game.boxscore.away_hits + '</td><td>' + game.boxscore.away_errors + '</td><td></tr>'
+        html_new_divs += '</table></div></div></div>'
+      })
+      $('#boxscore-deck').append(html_card_deck)
+      $('#bottom-nav').append(html_new_divs)
+  })
+
+
+
+
+})
+</script>
