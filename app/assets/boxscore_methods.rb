@@ -1,42 +1,32 @@
 #for the mlb boxscore json file#
 
 mlb_boxscore[:league][:games].each do |g|
+    boxscore = MlbBoxscore.new
     ## home team
-    g[:game][:home][:market] #city name
-    g[:game][:home][:name] #team name
-    g[:game][:home][:hits]
-    g[:game][:home][:runs]
-    g[:game][:home][:errors]
+    boxscore.home_team = Team.find_by(name: g[:game][:home][:market] + " " + g[:game][:home][:name])
+    boxscore.home_hits = g[:game][:home][:hits]
+    boxscore.home_runs = g[:game][:home][:runs]
+    boxscore.home_errors = g[:game][:home][:errors]
     ##away team
-    g[:game][:away][:market]
-    g[:game][:away][:name]
-    g[:game][:away][:hits]
-    g[:game][:away][:runs]
-    g[:game][:away][:errors]
+    boxscore.away_team = Team.find_by(name: g[:game][:away][:market] + " " + g[:game][:away][:name])
+    boxscore.away_hits = g[:game][:away][:hits]
+    boxscore.away_runs = g[:game][:away][:runs]
+    boxscore.away_errors = g[:game][:away][:errors]
     ## game info
-    g[:game][:final][:inning]
-    g[:game][:duration]
+    boxscore.total_innings = g[:game][:final][:inning]
+    boxscore.duration = g[:game][:duration]
     #winning pitcher info
-    g[:game][:pitching][:win][:first_name]
-    g[:game][:pitching][:win][:last_name]
-    g[:game][:pitching][:win][:win] #win number
-    g[:game][:pitching][:win][:loss]#loss number
+    boxscore.winning_pitcher = g[:game][:pitching][:win][:first_name] + " " + g[:game][:pitching][:win][:last_name]
+    boxscore.winning_pitcher_record = g[:game][:pitching][:win][:win] + "-" + g[:game][:pitching][:win][:loss]#loss number
     # losing pitcher info
-    g[:game][:pitching][:loss][:first_name]
-    g[:game][:pitching][:loss][:last_name]
-    g[:game][:pitching][:loss][:win] #win number
-    g[:game][:pitching][:loss][:loss]#loss number
+    boxscore.losing_pitcher = g[:game][:pitching][:loss][:first_name] + " " + g[:game][:pitching][:loss][:last_name]
+    boxscore.losing_pitcher_record = g[:game][:pitching][:loss][:win] + "-" + g[:game][:pitching][:loss][:loss]#loss number
     #save info
-    g[:game][:pitching][:save][:first_name]
-    g[:game][:pitching][:save][:last_name]
-    g[:game][:pitching][:save][:save] #save number
-    ##also available
-    #scoring by inning
-    #starting pitchers
-    # "Events", I assume scoring events
+    boxscore.save_pitcher = g[:game][:pitching][:save][:first_name] + " " + g[:game][:pitching][:save][:last_name]
+    boxscore .save_pitcher_save_count = g[:game][:pitching][:save][:save] #save number
   end
 
-  
+
   # g = game hash
   def nba_box
     #teams
