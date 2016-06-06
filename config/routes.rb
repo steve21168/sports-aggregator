@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :articles
-  resources :teams
-  resources :users
+  devise_for :users
 
   get '/' => 'home#home', as: 'home'
   get '/leagues/mlb' => 'leagues#mlb', as: 'mlb'

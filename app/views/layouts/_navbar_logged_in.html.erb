@@ -1,0 +1,44 @@
+
+<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+    &#9776;
+  </button>
+  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+    <a class="navbar-brand" href="#">Sports Aggregator</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <%= link_to "NFL", nfl_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "NBA", nba_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "MLB", mlb_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "NHL", nhl_path, class: "nav-link" %>
+      </li>
+      <!-- Scrollers  -->
+      <li class="nav-item">
+        <a class="nav-link page-scroll" href="#top">Top</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link page-scroll" href="#league">League News<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link page-scroll" href="#team">Team News</a>
+      </li>
+    </ul>
+
+    <div class="dropdown open pull-sm-right">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= @current_user.name %>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button">Settings</button>
+        <%= button_to "Logout", destroy_user_session_path, method: "delete", class: "dropdown-item" %>
+      </div>
+    </div>
+
+  </div>
+</nav>

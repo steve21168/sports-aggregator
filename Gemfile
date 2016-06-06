@@ -31,6 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'devise'
 gem 'nokogiri'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 
@@ -44,6 +45,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener'
+  gem 'dotenv-rails'
   #gem 'rack-mini-profiler'
 end
 
