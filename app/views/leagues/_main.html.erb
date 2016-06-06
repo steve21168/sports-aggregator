@@ -6,27 +6,30 @@
          <div class="card-deck-wrapper">
            <div class="card-deck">
              <div class="card">
+               <br>
                <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/2000px-ESPN_wordmark.svg.png", alt: "espn logo", class: "card-img-top img-fluid img-limit center-block" %>
                <div class="card-block">
-                 <h4 class="card-title">Headlines</h4>
+                 <h4 class="card-header">Headlines</h4>
                  <%= render partial: 'card_text', collection: @espn_articles, as: :article %>
                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                </div>
              </div>
              <!--Yahoo-->
              <div class="card">
+               <br>
                <%= image_tag "http://sportsmediareport.net/wp-content/uploads/2015/12/Yahoo-Sports-Logo.jpg", alt: "yahoo logo", class: "card-img-top img-fluid img-limit center-block" %>
                <div class="card-block">
-                 <h4 class="card-title">Headlines</h4>
+                 <h4 class="card-header">Headlines</h4>
                  <%= render partial: 'card_text', collection: @yahoo_articles, as: :article %>
                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                </div>
              </div>
              <!--CBS-->
              <div class="card">
+               <br>
                <%= image_tag "http://sports.cbsimg.net/images/blogs/cbs_sports_logo.JPG", alt: "cbs sports logo", class: "card-img-top img-fluid img-limit center-block" %>
                <div class="card-block">
-                 <h4 class="card-title">Headlines</h4>
+                 <h4 class="card-header">Headlines</h4>
                  <%= render partial: 'card_text', collection: @cbs_articles, as: :article %>
                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                </div>
