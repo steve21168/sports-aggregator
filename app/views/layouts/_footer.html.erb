@@ -22,7 +22,6 @@ $(document).ready(function(){
   }).done(function(response){
     var html_card_deck = ""
     var html_new_divs = ""
-    debugger
       response.forEach(function(game, index){
         html_card_deck += '<div class="card card-block" style="min-width: 250px" data-toggle="collapse" href="#game' + game.boxscore.id + '" aria-expanded="false" aria-controls="game' + game.boxscore.id + '"><center>' + game.home_team.team_name + ": " + game.boxscore.home_runs + "<br>" + game.away_team.team_name + ": " + game.boxscore.away_runs + "</center></div>"
         html_new_divs += '<div class="collapse" id="game' + game.boxscore.id + '"><div class="card card-block"><div><table>'
@@ -34,9 +33,6 @@ $(document).ready(function(){
       $('#boxscore-deck').append(html_card_deck)
       $('#bottom-nav').append(html_new_divs)
   })
-
-
-
 
 })
 </script>
