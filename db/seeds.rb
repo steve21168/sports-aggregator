@@ -152,9 +152,3 @@ Team.create!([
   ])
   puts "Finished NHL Teams"
   puts "Finished seeding data"
-
-https://api.sportradar.us/mlb-p1/schema/daily-games.xsd?api_key=bcr8bwxuv8yhzwxrbmwzy4yk
-
-https://api.sportradar.us/mlb-t1/games/2016/06/02/boxscore.json?api_key=bcr8bwxuv8yhzwxrbmwzy4yk
-
-http(s)://api.sportradar.us/mlb-[access_level][version]/games/[year]/[month]/[day]/boxscore.json?api_key=bcr8bwxuv8yhzwxrbmwzy4yk
