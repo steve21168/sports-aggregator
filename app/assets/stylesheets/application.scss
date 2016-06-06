@@ -1,6 +1,10 @@
 @import "bootstrap";
 @import "scrolling-nav";
 
+// body {
+//   padding-top: 100px;
+// }
+
 img.card-img-top.img-fluid.img-limit {
   height: auto;
   max-height: 80px;
@@ -10,12 +14,15 @@ img.card-img-top.img-fluid.img-limit {
   padding-bottom: 20px;
 }
 
+.splash-image {
+  padding-top: 0px;
+}
 
-#horiz-contain-1{
+#horiz-contain-1 {
      width:100%;
      height:100%;
      overflow:auto;
 }
-#horiz-contain-2{
+#horiz-contain-2 {
      width:100%;          // just an example
 }
