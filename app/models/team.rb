@@ -7,4 +7,22 @@ class Team < ActiveRecord::Base
   has_many :nba_boxscores
   has_many :nfl_boxscores
   has_many :nhl_boxscores
+
+
+  def self.nba_teams
+    League.find_by(abbreviation: "NBA").teams
+  end
+
+  def self.nfl_teams
+    League.find_by(abbreviation: "NFL").teams
+  end
+
+  def self.nhl_teams
+    League.find_by(abbreviation: "NHL").teams
+  end
+
+  def self.mlb_teams
+    League.find_by(abbreviation: "MLB").teams
+  end
+
 end
