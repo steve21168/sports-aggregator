@@ -79,9 +79,6 @@ class LeaguesController < ApplicationController
 
 
   private
-  def
-
-  end
 
   end
   def find_league_object(league)
