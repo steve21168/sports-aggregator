@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
+
   get '/' => 'home#home', as: 'home'
   get '/leagues/mlb' => 'leagues#mlb', as: 'mlb'
   get '/leagues/nba' => 'leagues#nba', as: 'nba'
@@ -10,5 +11,6 @@ Rails.application.routes.draw do
   get '/leagues/nba/boxscores' => 'leagues#nba_boxscores'
   get '/leagues/nfl/boxscores' => 'leagues#nfl_boxscores'
   get '/leagues/nhl/boxscores' => 'leagues#nhl_boxscores'
-
+  resources :users, only: [:edit, :update]
+  resources :user_teams, only: [:edit, :update, :create]
 end

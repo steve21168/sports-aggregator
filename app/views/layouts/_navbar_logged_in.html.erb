@@ -38,7 +38,8 @@
         <%= @current_user.name %>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <button class="dropdown-item" type="button">Settings</button>
+        <%= button_to "Teams", edit_user_team_path(@current_user), method: "get", class: "dropdown-item" %>
+        <%= button_to "Settings", edit_user_path(@current_user), method: "get", class: "dropdown-item" %>
         <%= button_to "Logout", destroy_user_session_path, method: "delete", class: "dropdown-item" %>
       </div>
     </div>

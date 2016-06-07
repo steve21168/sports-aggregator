@@ -1,0 +1,17 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <h1> Choose favorite teams in each sport </h1>
+  <%= form_for(@user) do |f| %>
+    <br>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :avatar %>
+    <%= f.text_field :avatar %><br>
+    <%= f.submit %>
+  <% end %>
+</div>
