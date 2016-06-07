@@ -49,7 +49,6 @@ module Adapter
     end
 
     def live_scrape
-      binding.pry
       url = "http://www.#{city}#{team_name}.com/news/index.html"
       doc = Nokogiri::HTML(open(url))
       headlines_array = []

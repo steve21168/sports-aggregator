@@ -8,7 +8,7 @@
   <h1> Choose favorite teams in each sport </h1>
   <%= form_for(@user, url: user_team_path, method: "patch") do |f| %>
     <%= f.label :user_teams, "NFL:" %>
-    <%= f.collection_select :team_ids, @nfl_teams, :id, :team_name, {}, {multiple: true}%><br>
+    <%= collection_select :team, :team_ids, @nfl_teams, :id, :team_name, {}, {multiple: true} %><br>
     <%= f.label :user_teams, "NBA:" %>
     <%= f.collection_select :team_ids, @nba_teams, :id, :team_name, {}, {multiple: true} %><br>
     <%= f.label :user_teams, "MLB:" %>
