@@ -6,16 +6,31 @@
 <br>
 <div class="container">
   <h1> Choose favorite teams in each sport </h1>
-  <%= form_for(@user, url: user_team_path, method: "patch") do |f| %>
-    <%= f.label :user_teams, "NFL:" %>
-    <%= collection_select :team, :team_ids, @nfl_teams, :id, :team_name, {}, {multiple: true} %><br>
-    <%= f.label :user_teams, "NBA:" %>
-    <%= f.collection_select :team_ids, @nba_teams, :id, :team_name, {}, {multiple: true} %><br>
-    <%= f.label :user_teams, "MLB:" %>
-    <%= f.collection_select :team_ids, @mlb_teams, :id, :team_name, {}, {multiple: true} %><br>
-    <%= f.label :user_teams, "NHL:" %>
-    <%= f.collection_select :team_ids, @nhl_teams, :id, :team_name, {}, {multiple: true} %><br>
-    <%= f.submit %>
-  <% end %>
-
+    <%= form_tag(user_team_path, method: "patch") do %>
+      <strong> MLB: </strong>
+      <select name="user[team_ids][]">
+        <% @mlb_teams.each do |team| %>
+        <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+        <% end %>
+      </select><br>
+      <strong> NBA: </strong>
+      <select name="user[team_ids][]">
+        <% @nba_teams.each do |team| %>
+        <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+        <% end %>
+      </select><br>
+      <strong> NFL: </strong>
+      <select name="user[team_ids][]">
+        <% @nfl_teams.each do |team| %>
+        <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+        <% end %>
+      </select><br>
+      <strong> NHL: </strong>
+      <select name="user[team_ids][]">
+        <% @nhl_teams.each do |team| %>
+        <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+        <% end %>
+      </select><br>
+      <%= submit_tag("Update Teams") %>
+    <% end %>
 </div>
