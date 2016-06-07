@@ -7,34 +7,36 @@ class GetBoxscores
       url = 'http://api.sportradar.us/mlb-t5/games/' + full_date.strftime("%Y") + '/' + full_date.strftime('%m') + '/' + full_date.strftime('%d') + '/boxscore.json?api_key=' + ENV["MLB_KEY"]
       mlb_boxscore = JSON.parse(open(url).read)
       mlb_boxscore["league"]["games"].each do |g|
-        boxscore = MlbBoxscore.new
-        ##game day
-        boxscore.game_date = mlb_boxscore["league"]["date"]
-        ## home team
-        boxscore.home_team = Team.find_by(team_name: g["game"]["home"]["market"] + " " + g["game"]["home"]["name"])
-        boxscore.home_hits = g["game"]["home"]["hits"]
-        boxscore.home_runs = g["game"]["home"]["runs"]
-        boxscore.home_errors = g["game"]["home"]["errors"]
-        ##away team
-        boxscore.away_team = Team.find_by(team_name: g["game"]["away"]["market"] + " " + g["game"]["away"]["name"])
-        boxscore.away_hits = g["game"]["away"]["hits"]
-        boxscore.away_runs = g["game"]["away"]["runs"]
-        boxscore.away_errors = g["game"]["away"]["errors"]
-        ## game info
-        boxscore.total_innings = g["game"]["final"]["inning"]
-        boxscore.duration = g["game"]["duration"]
-        #winning pitcher info
-        boxscore.winning_pitcher = g["game"]["pitching"]["win"]["first_name"] + " " + g["game"]["pitching"]["win"]["last_name"]
-        boxscore.winning_pitcher_record = g["game"]["pitching"]["win"]["win"].to_s + "-" + g["game"]["pitching"]["win"]["loss"].to_s#loss number
-        # losing pitcher info
-        boxscore.losing_pitcher = g["game"]["pitching"]["loss"]["first_name"] + " " + g["game"]["pitching"]["loss"]["last_name"]
-        boxscore.losing_pitcher_record = g["game"]["pitching"]["loss"]["win"].to_s + "-" + g["game"]["pitching"]["loss"]["loss"].to_s#loss number
-        #save info
-        if g["game"]["pitching"]["save"]
-          boxscore.save_pitcher = g["game"]["pitching"]["save"]["first_name"] + " " + g["game"]["pitching"]["save"]["last_name"]
-          boxscore.save_pitcher_save_count = g["game"]["pitching"]["save"]["save"] #save number
+        if !g['game']['rescheduled']
+          boxscore = MlbBoxscore.new
+          ##game day
+          boxscore.game_date = mlb_boxscore["league"]["date"]
+          ## home team
+          boxscore.home_team = Team.find_by(team_name: g["game"]["home"]["name"])
+          boxscore.home_hits = g["game"]["home"]["hits"]
+          boxscore.home_runs = g["game"]["home"]["runs"]
+          boxscore.home_errors = g["game"]["home"]["errors"]
+          ##away team
+          boxscore.away_team = Team.find_by(team_name: g["game"]["away"]["name"])
+          boxscore.away_hits = g["game"]["away"]["hits"]
+          boxscore.away_runs = g["game"]["away"]["runs"]
+          boxscore.away_errors = g["game"]["away"]["errors"]
+          ## game info
+          boxscore.total_innings = g["game"]["final"]["inning"]
+          boxscore.duration = g["game"]["duration"]
+          #winning pitcher info
+          boxscore.winning_pitcher = g["game"]["pitching"]["win"]["first_name"] + " " + g["game"]["pitching"]["win"]["last_name"]
+          boxscore.winning_pitcher_record = g["game"]["pitching"]["win"]["win"].to_s + "-" + g["game"]["pitching"]["win"]["loss"].to_s#loss number
+          # losing pitcher info
+          boxscore.losing_pitcher = g["game"]["pitching"]["loss"]["first_name"] + " " + g["game"]["pitching"]["loss"]["last_name"]
+          boxscore.losing_pitcher_record = g["game"]["pitching"]["loss"]["win"].to_s + "-" + g["game"]["pitching"]["loss"]["loss"].to_s#loss number
+          #save info
+          if g["game"]["pitching"]["save"]
+            boxscore.save_pitcher = g["game"]["pitching"]["save"]["first_name"] + " " + g["game"]["pitching"]["save"]["last_name"]
+            boxscore.save_pitcher_save_count = g["game"]["pitching"]["save"]["save"] #save number
+          end
+          boxscore.save
         end
-        boxscore.save
       end
     end
   end
@@ -48,12 +50,13 @@ class GetBoxscores
       game.away_team = Team.find_by(team_name: nfl_boxscore["away_team"]["market"] + " " + nfl_boxscore["away_team"]["name"])
       game.home_team_score = nfl_boxscore["home_team"]["points"]
       game.away_team_score = nfl_boxscore["away_team"]["points"]
+      game.save
     end
   end
 
   def get_nhl_boxscores
     if NhlBoxscore.all.length < 1
-      url = "http://api.sportradar.us/nhl-t3/games/005f6753-cd99-4b43-9ec4-790f9e0c3e09/boxscore.json?api_key=" + ENV["NHL_KEY"]
+      url = "http://api.sportradar.us/nhl-t3/games/8b2ea118-c494-4814-a14f-913f5a5611cd/boxscore.json?api_key=" + ENV["NHL_KEY"]
       nhl_boxscore = JSON.parse(open(url).read)
       game = NhlBoxscore.new
       game.home_team = Team.find_by(team_name: nhl_boxscore["home"]["market"] + " " + nhl_boxscore["home"]["name"])
@@ -82,6 +85,7 @@ class GetBoxscores
     self.new.get_mlb_boxscores
     self.new.get_nfl_boxscores
     self.new.get_nba_boxscores
+    self.new.get_nhl_boxscores
   end
 
   def self.run_test

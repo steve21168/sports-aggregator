@@ -19,6 +19,9 @@ class LeaguesController < ApplicationController
     @cbs_articles = articles.five_most_recent("cbs")
     @espn_articles = articles.five_most_recent("espn")
     @yahoo_articles = articles.five_most_recent("yahoo")
+    @team = "nyy"
+    @logo = "http://content.sportslogos.net/logos/53/68/thumbs/1256.gif"
+    @user = current_user
   end
 
   def nfl
