@@ -72,10 +72,18 @@ class LeaguesController < ApplicationController
     render :json => outbound_array
   end
 
+  def scrape_nhl
+    scraper = Adapter::NhlScraper.new(current_user.teams.find_by(league_id: 4))
+    scraper.live_scrape
+  end
 
 
   private
+  def
 
+  end
+
+  end
   def find_league_object(league)
     League.includes(:articles).find_by(abbreviation: league)
   end
