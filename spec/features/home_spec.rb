@@ -14,7 +14,6 @@ describe "the signin process", :type => :feature do
   end
   it "displays correct league when page is visited" do
     visit '/leagues/mlb'
-    binding.pry
     expect(page).to have_css("h1#league-title", text: "MLB")
     visit '/leagues/nba'
     expect(page).to have_css("h1#league-title", text: "NBA")
