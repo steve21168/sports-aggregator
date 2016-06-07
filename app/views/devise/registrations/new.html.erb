@@ -32,7 +32,57 @@
       <%= f.label :avatar %><br />
       <%= f.text_field :avatar, autofocus: true, class: "form-control" %>
     </fieldset>
-    
+    <h2>Choose your favorite teams</h2>
+    <table class="table table-striped">
+      <tr>
+        <td>
+          <strong> MLB: </strong>
+        </td>
+        <td>
+          <select name="user[team_ids][]">
+            <% @mlb_teams.each do |team| %>
+            <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+            <% end %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong> NBA: </strong>
+        </td>
+        <td>
+          <select name="user[team_ids][]">
+            <% @nba_teams.each do |team| %>
+            <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+            <% end %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong> NFL: </strong>
+        </td>
+        <td>
+          <select name="user[team_ids][]">
+            <% @nfl_teams.each do |team| %>
+            <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+            <% end %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong> NHL: </strong>
+        </td>
+        <td>
+          <select name="user[team_ids][]">
+            <% @nhl_teams.each do |team| %>
+            <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+            <% end %>
+          </select>
+        </td>
+      </tr>
+    </table>
     <div class="actions">
       <%= f.submit "Sign up", class: "btn btn-primary" %>
     </div>

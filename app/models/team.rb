@@ -10,19 +10,19 @@ class Team < ActiveRecord::Base
 
 
   def self.nba_teams
-    League.find_by(abbreviation: "NBA").teams
+    League.find_by(abbreviation: "NBA").teams.sort_by { |team| team.team_name}
   end
 
   def self.nfl_teams
-    League.find_by(abbreviation: "NFL").teams
+    League.find_by(abbreviation: "NFL").teams.sort_by { |team| team.team_name}
   end
 
   def self.nhl_teams
-    League.find_by(abbreviation: "NHL").teams
+    League.find_by(abbreviation: "NHL").teams.sort_by { |team| team.team_name}
   end
 
   def self.mlb_teams
-    League.find_by(abbreviation: "MLB").teams
+    League.find_by(abbreviation: "MLB").teams.sort_by { |team| team.team_name}
   end
 
 end

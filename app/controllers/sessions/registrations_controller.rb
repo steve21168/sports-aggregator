@@ -1,21 +1,20 @@
 class Sessions::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
-
   #GET /resource/sign_up
-  # def new
-  #   binding.pry
-  #   @mlb_teams = Teams.where(league_id: 1)
-  #   @nba_teams = Teams.where(league_id: 2)
-  #   @nfl_teams = Teams.where(league_id: 3)
-  #   @nhl_teams = Teams.where(league_id: 4)
-  #   super
-  # end
+  def new
+    @mlb_teams = Team.mlb_teams
+    @nba_teams = Team.nba_teams
+    @nfl_teams = Team.nfl_teams
+    @nhl_teams = Team.nhl_teams
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    current_user.team_ids = params[:user][:team_ids]
+  end
 
   # GET /resource/edit
   # def edit
@@ -62,4 +61,5 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
 end
