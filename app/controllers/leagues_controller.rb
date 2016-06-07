@@ -39,6 +39,38 @@ class LeaguesController < ApplicationController
     render :json => outbound_array
   end
 
+  def nfl_boxscores
+    boxscores =  NflBoxscore.all
+    outbound_array = []
+    boxscores.each do |box|
+      hash = {boxscore: box, home_team: box.home_team, away_team: box.away_team}
+      outbound_array << hash
+    end
+    render :json => outbound_array
+  end
+
+  def nba_boxscores
+    boxscores =  NbaBoxscore.all
+    outbound_array = []
+    boxscores.each do |box|
+      hash = {boxscore: box, home_team: box.home_team, away_team: box.away_team}
+      outbound_array << hash
+    end
+    render :json => outbound_array
+  end
+
+  def nhl_boxscores
+    boxscores =  NhlBoxscore.all
+    outbound_array = []
+    boxscores.each do |box|
+      hash = {boxscore: box, home_team: box.home_team, away_team: box.away_team}
+      outbound_array << hash
+    end
+    render :json => outbound_array
+  end
+
+
+
   private
 
   def find_league_object(league)

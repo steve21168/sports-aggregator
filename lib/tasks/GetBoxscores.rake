@@ -4,7 +4,7 @@ class GetBoxscores
     check = MlbBoxscore.where(game_date: Date.today - 1.day)
     if check.empty?
       full_date = DateTime.now - 1.day
-      url = 'http://api.sportradar.us/mlb-t5/games/' + full_date.strftime("%Y") + '/' + full_date.strftime('%m') + '/' + full_date.strftime('%d') + '/boxscore.json?api_key=bcr8bwxuv8yhzwxrbmwzy4yk'
+      url = 'http://api.sportradar.us/mlb-t5/games/' + full_date.strftime("%Y") + '/' + full_date.strftime('%m') + '/' + full_date.strftime('%d') + '/boxscore.json?api_key=' + ENV["MLB_KEY"]
       mlb_boxscore = JSON.parse(open(url).read)
       mlb_boxscore["league"]["games"].each do |g|
         boxscore = MlbBoxscore.new
@@ -39,8 +39,52 @@ class GetBoxscores
     end
   end
 
+  def get_nfl_boxscores
+    if NflBoxscore.all.length < 1
+      url = "http://api.sportradar.us/nfl-t1/2015/PST/4/CAR/DEN/summary.json?api_key=" + ENV['NFL_KEY']
+      nfl_boxscore = JSON.parse(open(url).read)
+      game = NflBoxscore.new
+      game.home_team = Team.find_by(team_name: nfl_boxscore["home_team"]["market"] + " " + nfl_boxscore["home_team"]["name"])
+      game.away_team = Team.find_by(team_name: nfl_boxscore["away_team"]["market"] + " " + nfl_boxscore["away_team"]["name"])
+      game.home_team_score = nfl_boxscore["home_team"]["points"]
+      game.away_team_score = nfl_boxscore["away_team"]["points"]
+    end
+  end
+
+  def get_nhl_boxscores
+    if NhlBoxscore.all.length < 1
+      url = "http://api.sportradar.us/nhl-t3/games/005f6753-cd99-4b43-9ec4-790f9e0c3e09/boxscore.json?api_key=" + ENV["NHL_KEY"]
+      nhl_boxscore = JSON.parse(open(url).read)
+      game = NhlBoxscore.new
+      game.home_team = Team.find_by(team_name: nhl_boxscore["home"]["market"] + " " + nhl_boxscore["home"]["name"])
+      game.away_team = Team.find_by(team_name: nhl_boxscore["away"]["market"] + " " + nhl_boxscore["away"]["name"])
+      game.home_team_score = nhl_boxscore["home"]["points"]
+      game.away_team_score = nhl_boxscore["away"]["points"]
+      game.save
+    end
+  end
+
+  def get_nba_boxscores
+    if NbaBoxscore.all.length < 1
+      url = "http://api.sportradar.us/nba-t3/games/c503707f-579a-4a6a-bb77-8cdef63c5981/boxscore.json?api_key=" + ENV["NBA_KEY"]
+      nba_boxscore = JSON.parse(open(url).read)
+      game = NbaBoxscore.new
+      game.home_team = Team.find_by(team_name: nba_boxscore["home"]["market"] + " " + nba_boxscore["home"]["name"])
+      game.away_team = Team.find_by(team_name: nba_boxscore["away"]["market"] + " " + nba_boxscore["away"]["name"])
+      game.home_team_score = nba_boxscore["home"]["points"]
+      game.away_team_score = nba_boxscore["away"]["points"]
+      game.save
+    end
+  end
+
+
   def self.run
     self.new.get_mlb_boxscores
+    self.new.get_nfl_boxscores
+    self.new.get_nba_boxscores
+  end
+
+  def self.run_test
   end
 
 end

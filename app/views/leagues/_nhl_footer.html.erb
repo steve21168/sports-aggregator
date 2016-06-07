@@ -1,0 +1,31 @@
+<nav class="navbar navbar-light bg-faded navbar-fixed-bottom" id="bottom-nav">
+
+  <div class="nav navbar-nav">
+    <div id='horiz-contain-1'>
+      <div id='horiz-contain-2'>
+        <div class="card-deck-wrapper">
+          <div class="card-deck" id="boxscore-deck">
+          </div><!--end card deck-->
+        </div><!--end card deck wrapper-->
+      </div><!-- end container 2 -->
+    </div><!-- end container 1 -->
+  </div><!--end footer nav-->
+
+
+</nav>
+
+<script>
+$(document).ready(function(){
+  $.ajax({
+    url: '/leagues/nhl/boxscores',
+    dataType: "JSON"
+  }).done(function(response){
+    var html_card_deck = ""
+      response.forEach(function(game, index){
+        html_card_deck += '<div class="card card-block" style="min-width: 250px" data-toggle="collapse" href="#game' + game.boxscore.id + '" aria-expanded="false" aria-controls="game' + game.boxscore.id + '"><center>' + game.home_team.team_name + ": " + game.boxscore.home_team_score + "<br>" + game.away_team.team_name + ": " + game.boxscore.away_team_score + "</center></div>"
+      })
+      $('#boxscore-deck').append(html_card_deck)
+  })
+
+})
+</script>

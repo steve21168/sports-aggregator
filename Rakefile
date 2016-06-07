@@ -23,3 +23,7 @@ task :update_all => :environment do
   YahooScraper.run
   GetBoxscores.run
 end
+
+task :boxscore_test => :environment do
+  GetBoxscores.run_test
+end

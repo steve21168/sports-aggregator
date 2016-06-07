@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606153819) do
+ActiveRecord::Schema.define(version: 20160606225139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,33 @@ ActiveRecord::Schema.define(version: 20160606153819) do
     t.date     "game_date"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "nba_boxscores", force: :cascade do |t|
+    t.string   "home_team_id"
+    t.string   "away_team_id"
+    t.integer  "home_team_score"
+    t.integer  "away_team_score"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "nfl_boxscores", force: :cascade do |t|
+    t.string   "home_team_id"
+    t.string   "away_team_id"
+    t.integer  "home_team_score"
+    t.integer  "away_team_score"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "nhl_boxscores", force: :cascade do |t|
+    t.string   "home_team_id"
+    t.string   "away_team_id"
+    t.integer  "home_team_score"
+    t.integer  "away_team_score"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "teams", force: :cascade do |t|

@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   get '/leagues/nfl' => 'leagues#nfl', as: 'nfl'
   get '/leagues/nhl' => 'leagues#nhl', as: 'nhl'
   get '/leagues/mlb/boxscores' => 'leagues#mlb_boxscores'
+  get '/leagues/nba/boxscores' => 'leagues#nba_boxscores'
+  get '/leagues/nfl/boxscores' => 'leagues#nfl_boxscores'
+  get '/leagues/nhl/boxscores' => 'leagues#nhl_boxscores'
 
 end
