@@ -75,10 +75,19 @@ class LeaguesController < ApplicationController
     scraper.live_scrape
   end
 
+  def scrape_nba
+    scraper = Adapter::NbaScraper.new(current_user.teams.find_by(league_id: 2))
+    scraper.live_scrape
+  end
+
+  def scrape_nfl
+    scraper = Adapter::NflScraper.new(current_user.teams.find_by(league_id: 3))
+    scraper.live_scrape
+  end
+
 
   private
 
-  end
   def find_league_object(league)
     League.includes(:articles).find_by(abbreviation: league)
   end
