@@ -10,6 +10,7 @@ class UserTeamsController < ApplicationController
 
   def update
     current_user.update(user_teams_params)
+    redirect_to home_path
   end
 
 
