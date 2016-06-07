@@ -68,7 +68,7 @@ class LeaguesController < ApplicationController
     boxscores =  NhlBoxscore.all
     outbound_array = []
     boxscores.each do |box|
-      hash = {boxscore: box, home_team: boxgit.home_team, away_team: box.away_team}
+      hash = {boxscore: box, home_team: box.home_team, away_team: box.away_team}
       outbound_array << hash
     end
     render :json => outbound_array
