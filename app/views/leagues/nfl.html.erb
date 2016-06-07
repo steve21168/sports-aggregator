@@ -17,7 +17,6 @@ $(document).ready(function(){
     url: "/leagues/nfl/scrape",
     dataType: "JSON"
   }).done(function(response){
-
     var j = 10
     if (response.length < i){
       j = response.length
