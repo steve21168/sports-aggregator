@@ -3,7 +3,7 @@ module Adapter
     attr_reader :team_name
 
     def initialize(team_name)
-      @team_name = team_name
+      @team_name = team_name.gsub(" ","")
     end
 
     def live_scrape
@@ -23,7 +23,7 @@ module Adapter
     attr_reader :team_name
 
     def initialize(team_name)
-      @team_name = team_name
+      @team_name = team_name.gsub(" ","")
     end
 
     def live_scrape
@@ -41,23 +41,23 @@ module Adapter
   end
 
   class NflScraper
-    attr_reader :city, :team_name
+    attr_reader :city, :team_name, :abbreviation
 
-    def initialize(city, team_name)
+    def initialize(city, team_name, abbreviation)
       @city = city
       @team_name = team_name
+      @abbreviation = abbreviation
     end
 
     def live_scrape
-      url = "http://www.#{city}#{team_name}.com/news/index.html"
+      url = "http://www.nfl.com/teams/#{city}#{team_name}/profile?team=#{abbreviation}"
       doc = Nokogiri::HTML(open(url))
       headlines_array = []
-      doc.css('.content-type-club-article a').each do |headline|
-        link = "http://www.#{city}#{team_name}.com" + headline.attribute("href").value
-        headline = headline.attribute("title").value
+      doc.css('h4.headline a')[1..-1].each do |hl|
+        link = "http://www.nfl.com" + hl.attribute("href").value
+        headline = hl.children.text
         headlines_array << { headline: headline, link: link}
       end
-      binding.pry
       headlines_array
     end
   end
