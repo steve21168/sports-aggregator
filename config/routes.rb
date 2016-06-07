@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/leagues/nba/boxscores' => 'leagues#nba_boxscores'
   get '/leagues/nfl/boxscores' => 'leagues#nfl_boxscores'
   get '/leagues/nhl/boxscores' => 'leagues#nhl_boxscores'
+  get '/leagues/nhl/scrape' => 'leagues#scrape_nhl'
+  get '/leagues/nba/scrape' => 'leagues#scrape_nba'
+  get '/leagues/nfl/scrape' => 'leagues#scrape_nfl'
   resources :users, only: [:edit, :update]
   resources :user_teams, only: [:edit, :update, :create]
 end

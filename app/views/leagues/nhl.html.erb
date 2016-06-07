@@ -8,3 +8,36 @@
                                     } %>
 
 <%= render partial: 'nhl_footer' %>
+<script>
+  $(document).ready(function(){
+    debugger
+    var html = ""
+    $.ajax({
+      url: "/leagues/nhl/scrape",
+      dataType: "JSON"
+    }).done(function(response){
+
+      var j = 10
+      if (response.length < i){
+        j = response.length
+      }
+
+      html += '<div class="card-deck-wrapper"><div class="card-deck">'
+      html += '<div class="card"><br>'
+      html += '<img class="card-img-top img-fluid img-limit center-block" src=<%=@team.logo%>>'
+      html += '<div class="card-block"><h4 class="card-header">Headlines</h4>'
+      for(var i = 0; i < (j - 5); i++ ){
+        html += '<p class="card-text"><a target="_blank" href="' +   response[i].link + '">' +   response[i].headline + '</a></p>'
+      }
+      html += '</div></div>'
+      html += '<div class="card"><br>'
+      html += '<img class="card-img-top img-fluid img-limit center-block" src=<%=@team.logo%>>'
+      html += '<div class="card-block"><h4 class="card-header">Headlines</h4>'
+      for(var k = 5; k < j; k++ ){
+        html += '<p class="card-text"><a target="_blank" href="' +  response[k].link + '">' +   response[k].headline + '</a></p>'
+      }
+      html += '</div></div></div></div>'
+      $('div .col-lg-12').append(html)
+    })
+  })
+</script>
