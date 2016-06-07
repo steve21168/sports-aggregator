@@ -1,10 +1,12 @@
 class LeaguesController < ApplicationController
+  include Adapter
 
   def nba
     articles = ArticleFinder.new(find_league_object("NBA"))
     @cbs_articles = articles.five_most_recent("cbs")
     @espn_articles = articles.five_most_recent("espn")
     @yahoo_articles = articles.five_most_recent("yahoo")
+    @team = current_user.teams.find_by(league_id: 2)
   end
 
   def nhl
@@ -12,6 +14,7 @@ class LeaguesController < ApplicationController
     @cbs_articles = articles.five_most_recent("cbs")
     @espn_articles = articles.five_most_recent("espn")
     @yahoo_articles = articles.five_most_recent("yahoo")
+    @team = current_user.teams.find_by(league_id: 4)
   end
 
   def mlb
@@ -27,6 +30,7 @@ class LeaguesController < ApplicationController
     @cbs_articles = articles.five_most_recent("cbs")
     @espn_articles = articles.five_most_recent("espn")
     @yahoo_articles = articles.five_most_recent("yahoo")
+    @team = current_user.teams.find_by(league_id: 3)
   end
 
 
@@ -64,25 +68,26 @@ class LeaguesController < ApplicationController
     boxscores =  NhlBoxscore.all
     outbound_array = []
     boxscores.each do |box|
-      hash = {boxscore: box, home_team: box.home_team, away_team: box.away_team}
+      hash = {boxscore: box, home_team: boxgit.home_team, away_team: box.away_team}
       outbound_array << hash
     end
     render :json => outbound_array
   end
 
+
   def scrape_nhl
-    scraper = Adapter::NhlScraper.new(current_user.teams.find_by(league_id: 4))
-    scraper.live_scrape
+    scraper = Adapter::NhlScraper.new(current_user.teams.find_by(league_id: 4).team_name)
+    render :json => scraper.live_scrape
   end
 
   def scrape_nba
-    scraper = Adapter::NbaScraper.new(current_user.teams.find_by(league_id: 2))
-    scraper.live_scrape
+    scraper = Adapter::NbaScraper.new(current_user.teams.find_by(league_id: 2).team_name)
+    render :json => scraper.live_scrape
   end
 
   def scrape_nfl
     scraper = Adapter::NflScraper.new(current_user.teams.find_by(league_id: 3))
-    scraper.live_scrape
+    render :json => scraper.live_scrape
   end
 
 
