@@ -13,13 +13,15 @@ describe "the signin process", :type => :feature do
     expect(page).to have_content 'MLB'
   end
   it "displays correct league when page is visited" do
+    visit '/leagues/mlb'
+    binding.pry
+    expect(page).to have_css("h1#league-title", text: "MLB")
     visit '/leagues/nba'
     expect(page).to have_css("h1#league-title", text: "NBA")
-    visit '/leagues/mlb'
-    expect(page).to have_css("h1#league-title", text: "MLB")
     visit '/leagues/nfl'
     expect(page).to have_css("h1#league-title", text: "NFL")
     visit '/leagues/nhl'
     expect(page).to have_css("h1#league-title", text: "NHL")
   end
+
 end

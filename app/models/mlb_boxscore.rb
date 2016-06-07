@@ -3,7 +3,7 @@ class MlbBoxscore < ActiveRecord::Base
   belongs_to :away_team, :class_name => 'Team'
 
 
-  # 
+
   # def self.create_boxscores
   #   check = MlbBoxscore.where(game_date: Date.today - 1.day)
   #   if check.empty?
