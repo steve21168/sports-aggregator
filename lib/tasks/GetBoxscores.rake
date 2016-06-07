@@ -46,8 +46,8 @@ class GetBoxscores
       url = "http://api.sportradar.us/nfl-t1/2015/PST/4/CAR/DEN/summary.json?api_key=" + ENV['NFL_KEY']
       nfl_boxscore = JSON.parse(open(url).read)
       game = NflBoxscore.new
-      game.home_team = Team.find_by(team_name: nfl_boxscore["home_team"]["market"] + " " + nfl_boxscore["home_team"]["name"])
-      game.away_team = Team.find_by(team_name: nfl_boxscore["away_team"]["market"] + " " + nfl_boxscore["away_team"]["name"])
+      game.home_team = Team.find_by(team_name: nfl_boxscore["home_team"]["name"])
+      game.away_team = Team.find_by(team_name: nfl_boxscore["away_team"]["name"])
       game.home_team_score = nfl_boxscore["home_team"]["points"]
       game.away_team_score = nfl_boxscore["away_team"]["points"]
       game.save
@@ -59,8 +59,8 @@ class GetBoxscores
       url = "http://api.sportradar.us/nhl-t3/games/8b2ea118-c494-4814-a14f-913f5a5611cd/boxscore.json?api_key=" + ENV["NHL_KEY"]
       nhl_boxscore = JSON.parse(open(url).read)
       game = NhlBoxscore.new
-      game.home_team = Team.find_by(team_name: nhl_boxscore["home"]["market"] + " " + nhl_boxscore["home"]["name"])
-      game.away_team = Team.find_by(team_name: nhl_boxscore["away"]["market"] + " " + nhl_boxscore["away"]["name"])
+      game.home_team = Team.find_by(team_name: nhl_boxscore["home"]["name"])
+      game.away_team = Team.find_by(team_name: nhl_boxscore["away"]["name"])
       game.home_team_score = nhl_boxscore["home"]["points"]
       game.away_team_score = nhl_boxscore["away"]["points"]
       game.save
@@ -72,8 +72,8 @@ class GetBoxscores
       url = "http://api.sportradar.us/nba-t3/games/c503707f-579a-4a6a-bb77-8cdef63c5981/boxscore.json?api_key=" + ENV["NBA_KEY"]
       nba_boxscore = JSON.parse(open(url).read)
       game = NbaBoxscore.new
-      game.home_team = Team.find_by(team_name: nba_boxscore["home"]["market"] + " " + nba_boxscore["home"]["name"])
-      game.away_team = Team.find_by(team_name: nba_boxscore["away"]["market"] + " " + nba_boxscore["away"]["name"])
+      game.home_team = Team.find_by(team_name: nba_boxscore["home"]["name"])
+      game.away_team = Team.find_by(team_name: nba_boxscore["away"]["name"])
       game.home_team_score = nba_boxscore["home"]["points"]
       game.away_team_score = nba_boxscore["away"]["points"]
       game.save

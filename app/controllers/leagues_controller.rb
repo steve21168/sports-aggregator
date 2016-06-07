@@ -86,7 +86,9 @@ class LeaguesController < ApplicationController
   end
 
   def scrape_nfl
-    scraper = Adapter::NflScraper.new(current_user.teams.find_by(league_id: 3))
+    city = current_user.teams.find_by(league_id: 3).city.gsub(" ","")
+    team_name = current_user.teams.find_by(league_id: 3).team_name.gsub(" ","")
+    scraper = Adapter::NflScraper.new(city, team_name)
     render :json => scraper.live_scrape
   end
 
