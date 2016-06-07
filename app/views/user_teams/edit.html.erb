@@ -5,32 +5,61 @@
 <br>
 <br>
 <div class="container">
-  <h1> Choose favorite teams in each sport </h1>
+    <h4>Choose Your Favorite Team for Each League</h4>
     <%= form_tag(user_team_path, method: "patch") do %>
-      <strong> MLB: </strong>
-      <select name="user[team_ids][]">
-        <% @mlb_teams.each do |team| %>
-        <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
-        <% end %>
-      </select><br>
-      <strong> NBA: </strong>
-      <select name="user[team_ids][]">
-        <% @nba_teams.each do |team| %>
-        <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
-        <% end %>
-      </select><br>
-      <strong> NFL: </strong>
-      <select name="user[team_ids][]">
-        <% @nfl_teams.each do |team| %>
-        <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
-        <% end %>
-      </select><br>
-      <strong> NHL: </strong>
-      <select name="user[team_ids][]">
-        <% @nhl_teams.each do |team| %>
-        <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
-        <% end %>
-      </select><br>
-      <%= submit_tag("Update Teams") %>
-    <% end %>
+    <table class="table table-striped">
+      <tr>
+        <td>
+          <strong> MLB: </strong>
+        </td>
+        <td>
+          <select name="user[team_ids][]">
+            <% @mlb_teams.each do |team| %>
+            <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+            <% end %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong> NBA: </strong>
+        </td>
+        <td>
+          <select name="user[team_ids][]">
+            <% @nba_teams.each do |team| %>
+            <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+            <% end %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong> NFL: </strong>
+        </td>
+        <td>
+          <select name="user[team_ids][]">
+            <% @nfl_teams.each do |team| %>
+            <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+            <% end %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong> NHL: </strong>
+        </td>
+        <td>
+          <select name="user[team_ids][]">
+            <% @nhl_teams.each do |team| %>
+            <option value='<%= team.id %>' <%= "selected" if @user.team_ids.include?(team.id)%> ><%= team.team_name%></option>
+            <% end %>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+      <%= button_tag(type: "submit", class: "btn btn-info") do %>
+          Update Teams
+      <%end%>
+      <% end %>
 </div>
