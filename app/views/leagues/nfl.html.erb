@@ -1,4 +1,5 @@
-<%= render partial: 'splash', locals: { image: "lambeau" }%>
+<% photo = ["lambeau", "nyg-car", "nyg-rb"].sample %>
+<%= render partial: 'splash', locals: { image: photo }%>
 
 <%= render partial: 'main', locals: {
                                       league: "NFL",

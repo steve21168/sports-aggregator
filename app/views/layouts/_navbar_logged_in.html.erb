@@ -6,7 +6,17 @@
   </button>
   <%= link_to image_tag("sporthub_logo", width: '150', height: '100'), home_path, class: "navbar-brand" %>
 
-  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+  <div class="collapse navbar-toggleable-xs nav-center" id="exCollapsingNavbar2">
+    <div class="dropdown pull-sm-right">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <%= @current_user.name %>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <%= button_to "Teams", edit_user_team_path(@current_user), method: "get", class: "dropdown-item" %>
+        <%= button_to "Settings", edit_user_path(@current_user), method: "get", class: "dropdown-item" %>
+        <%= button_to "Logout", destroy_user_session_path, method: "delete", class: "dropdown-item" %>
+      </div>
+    </div>
     <ul class="nav navbar-nav">
       <li class="nav-item">
         <%= link_to "NFL", nfl_path, class: "nav-link" %>
@@ -21,27 +31,17 @@
         <%= link_to "NHL", nhl_path, class: "nav-link" %>
       </li>
       <!-- Scrollers  -->
-      <li class="nav-item">
-        <a class="nav-link page-scroll" href="#top">Top</span></a>
+      <li class="nav-item pull-sm-right tiny-pad">
+        <a class="nav-link page-scroll" href="#team">Team News</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item pull-sm-right">
         <a class="nav-link page-scroll" href="#league">League News<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link page-scroll" href="#team">Team News</a>
+      <li class="nav-item pull-sm-right">
+        <a class="nav-link page-scroll" href="#top">Top</span></a>
       </li>
     </ul>
 
-    <div class="dropdown pull-sm-right">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <%= @current_user.name %>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <%= button_to "Teams", edit_user_team_path(@current_user), method: "get", class: "dropdown-item" %>
-        <%= button_to "Settings", edit_user_path(@current_user), method: "get", class: "dropdown-item" %>
-        <%= button_to "Logout", destroy_user_session_path, method: "delete", class: "dropdown-item" %>
-      </div>
-    </div>
 
   </div>
 </nav>
