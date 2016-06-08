@@ -6,9 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <% if user_signed_in? %>
+
+    <% if user_signed_in? && request.fullpath == "/" %>
+      <%= render 'layouts/home_nav' %>
+    <% elsif user_signed_in? %>
       <%= render 'layouts/navbar_logged_in' %>
     <% else %>
       <%= render 'layouts/navbar_not_logged_in' %>
