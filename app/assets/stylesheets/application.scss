@@ -1,7 +1,3 @@
-/*= require_self
-
-*/
-
 @import "bootstrap";
 @import "scrolling-nav";
 
@@ -10,19 +6,15 @@ img.card-img-top.img-fluid.img-limit {
   max-height: 80px;
 }
 
-// #carousel-item {
-//   background-position: center center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-// }
+
 .carousel-inner img {
     max-height: 100%;
 }
 
 .avatar-nav {
-width: 40px;
-height: 40px;
-border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
 
