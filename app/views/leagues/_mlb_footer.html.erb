@@ -24,8 +24,8 @@ $(document).ready(function(){
     var html_new_divs = ""
       response.forEach(function(game, index){
         html_card_deck += '<div class="card card-block" style="min-width: 250px" data-toggle="collapse" href="#game' + game.boxscore.id + '" aria-expanded="false" aria-controls="game' + game.boxscore.id + '"><center>' + game.home_team.team_name + ": " + game.boxscore.home_runs + "<br>" + game.away_team.team_name + ": " + game.boxscore.away_runs + "</center></div>"
-        html_new_divs += '<div class="collapse" id="game' + game.boxscore.id + '"><div class="card card-block"><div><table>'
-        html_new_divs += '<tr><td>' + "Teams" + '</td><td>' + "R" + '</td><td>' + "H" + '</td><td>' + "E" + '</td><td></tr>'
+        html_new_divs += '<div class="collapse width" id="game' + game.boxscore.id + '"><div class="card card-block" style="width: 20rem"><div><table class="table">'
+        html_new_divs += '<strong><tr><td>' + "Teams" + '</td><td>' + "R" + '</td><td>' + "H" + '</td><td>' + "E" + '</td><td></tr></strong>'
         html_new_divs += '<tr><td>' + game.home_team.team_name + ': </td><td>' + game.boxscore.home_runs+ '</td><td>' + game.boxscore.home_hits + '</td><td>' + game.boxscore.home_errors + '</td><td></tr>'
         html_new_divs += '<tr><td>' + game.away_team.team_name + ': </td><td>' + game.boxscore.away_runs+ '</td><td>' + game.boxscore.away_hits + '</td><td>' + game.boxscore.away_errors + '</td><td></tr>'
         html_new_divs += '</table></div></div></div>'
