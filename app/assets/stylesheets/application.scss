@@ -10,6 +10,18 @@ img.card-img-top.img-fluid.img-limit {
   max-height: 80px;
 }
 
+.img-splash {
+  width: 100% !important;
+}
+
+.tiny-pad {
+  padding-right: 10px !important;
+}
+
+.collapse.in {
+  display: inline-block !important;
+}
+
 #league-title {
   padding-bottom: 20px;
 }
@@ -33,5 +45,5 @@ nav#bottom-nav {
      overflow:auto;
 }
 #horiz-contain-2 {
-     width:100%;          // just an example
+     width:100%;
 }
