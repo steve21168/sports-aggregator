@@ -16,7 +16,7 @@ module LeaguesHelper
   end
 
   def nba_images
-    ["jordan", "basketball", ].sample
+    ["jordan", "basketball"].sample
   end
 
 end
