@@ -5,13 +5,19 @@
 <br>
 <br>
 <div class="container">
-  <h1> Choose favorite teams in each sport </h1>
+  <h1> Profile </h1>
   <%= form_for(@user) do |f| %>
     <br>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-    <%= f.label :avatar %>
-    <%= f.text_field :avatar %><br>
-    <%= f.submit %>
+    <fieldset class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %><br>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :avatar %>
+      <%= f.text_field :avatar, class: "form-control"%><br>
+    </fieldset>
+    <div class="actions">
+      <%= f.submit "Update Profile", class: "btn btn-primary"%>
+    </div>
   <% end %>
 </div>
