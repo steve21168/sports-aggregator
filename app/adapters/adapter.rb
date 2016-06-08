@@ -30,7 +30,7 @@ module Adapter
       url = "http://www.nba.com/#{team_name}/news"
       doc = Nokogiri::HTML(open(url))
       headlines_array = []
-      headlines = doc.css('a.node_title.related-content__link.related-content__link--title')
+      headlines = doc.css('.post__title a')
       headlines.each do |headline|
         link = "http://www.nba.com" + headline.attribute("href").value
         headline = headline.children.text
