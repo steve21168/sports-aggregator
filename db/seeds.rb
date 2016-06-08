@@ -122,7 +122,7 @@ Team.create!([
   {team_name: "Ducks", abbreviation: "ANA", city: "Anaheim", state: "California", country: "USA", logo: "http://content.sportslogos.net/logos/1/1736/thumbs/173616512014.gif", league_id: 4},
   {team_name: "Coyotes", abbreviation: "ARI", city: "Phoenix", state: "Arizona", country: "USA", logo: "http://content.sportslogos.net/logos/1/5263/thumbs/526378072015.gif", league_id: 4},
   {team_name: "Bruins", abbreviation: "BOS", city: "Boston", state: "Massachusettes", country: "USA", logo: "http://content.sportslogos.net/logos/1/3/thumbs/venf9fmhgnsawnxxvehf.gif", league_id: 4},
-  {team_name: "Sabers", abbreviation: "BUF", city: "Buffalo", state: "New York", country: "USA", logo: "http://content.sportslogos.net/logos/1/4/thumbs/i40oxcdbo7xtfamqqhqachoyo.gif", league_id: 4},
+  {team_name: "Sabres", abbreviation: "BUF", city: "Buffalo", state: "New York", country: "USA", logo: "http://content.sportslogos.net/logos/1/4/thumbs/i40oxcdbo7xtfamqqhqachoyo.gif", league_id: 4},
   {team_name: "Flames", abbreviation: "CAL", city: "Calgary", state: "Alberta", country: "Canada", logo: "http://content.sportslogos.net/logos/1/5/thumbs/50.gif", league_id: 4},
   {team_name: "Hurricanes", abbreviation: "CAR", city: "Raleigh", state: "North Carolina", country: "USA", logo: "http://content.sportslogos.net/logos/1/6/thumbs/fotih31tn5r345nufo5xxayh3.gif", league_id: 4},
   {team_name: "Blackhawks", abbreviation: "CHI", city: "Chicago", state: "Illinois", country: "USA", logo: "http://content.sportslogos.net/logos/1/7/thumbs/56.gif", league_id: 4},
