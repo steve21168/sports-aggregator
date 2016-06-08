@@ -1,13 +1,18 @@
 @import "bootstrap";
 @import "scrolling-nav";
 
-// body {
-//   padding-top: 100px;
-// }
-
 img.card-img-top.img-fluid.img-limit {
   height: auto;
   max-height: 80px;
+}
+
+// #carousel-item {
+//   background-position: center center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
+.carousel-inner img {
+    max-height: 100%;
 }
 
 .img-splash {

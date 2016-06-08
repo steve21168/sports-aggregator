@@ -11,7 +11,7 @@
                <div class="card-block">
                  <h4 class="card-header">Headlines</h4>
                  <%= render partial: 'card_text', collection: @espn_articles, as: :article %>
-                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                 <p class="card-text"><small class="text-muted">Last updated <%= updated_at(@last_updated)%> ago</small></p>
                </div>
              </div>
              <!--Yahoo-->
@@ -21,7 +21,7 @@
                <div class="card-block">
                  <h4 class="card-header">Headlines</h4>
                  <%= render partial: 'card_text', collection: @yahoo_articles, as: :article %>
-                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                 <p class="card-text"><small class="text-muted">Last updated <%= updated_at(@last_updated)%> ago</small></p>
                </div>
              </div>
              <!--CBS-->
@@ -31,7 +31,7 @@
                <div class="card-block">
                  <h4 class="card-header">Headlines</h4>
                  <%= render partial: 'card_text', collection: @cbs_articles, as: :article %>
-                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                 <p class="card-text"><small class="text-muted">Last updated <%= updated_at(@last_updated)%> ago</small></p>
                </div>
              </div>
            </div>

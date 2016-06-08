@@ -9,9 +9,11 @@ describe "the signin process", :type => :feature do
     end
     click_button 'Log in'
   end
+  
   it "when signed can see links on nav bar" do
     expect(page).to have_content 'MLB'
   end
+
   it "displays correct league when page is visited" do
     visit '/leagues/mlb'
     expect(page).to have_css("h1#league-title", text: "MLB")
