@@ -1,3 +1,59 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+img.card-img-top.img-fluid.img-limit {
+  height: auto;
+  max-height: 80px;
+}
+
+
+.carousel-inner img {
+    max-height: 100%;
+}
+
+.avatar-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+
+}
+
+.img-splash {
+  width: 100% !important;
+}
+
+.tiny-pad {
+  padding-right: 10px !important;
+}
+
+.collapse.in {
+  display: inline-block !important;
+}
+
+#league-title {
+  padding-bottom: 20px;
+}
+
+.splash-image {
+  padding-top: 0px;
+}
+
+.navbar-brand img {
+  margin-top: -35px;
+  margin-right: 15px;
+}
+
+nav#bottom-nav {
+  padding: 20px;
+}
+
+#horiz-contain-1 {
+     width:100%;
+     height:100%;
+     overflow:auto;
+}
+#horiz-contain-2 {
+     width:100%;
+}
