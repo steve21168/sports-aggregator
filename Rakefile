@@ -17,17 +17,16 @@ task :yahoo_updater => :environment do
   YahooScraper.run
 end
 
-task :boxscore_test => :environment do
-  GetBoxscores.run_test
-end
-
 task :reset_articles => :environment do
   ResetArticle.run
-end 
+end
 
 task :update_all => :environment do
   ESPNScraper.run
   CBSScraper.run
   YahooScraper.run
+end
+
+task :update_boxscores => :environment do
   GetBoxscores.run
 end
