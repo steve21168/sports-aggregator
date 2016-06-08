@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-  include Adapter
+  before_action :last_updated
 
   def nba
     articles = ArticleFinder.new(find_league_object("NBA"))
@@ -65,6 +65,10 @@ class LeaguesController < ApplicationController
   end
 
   private
+
+  def last_updated
+    @last_updated = Article.last.created_at
+  end
 
   def boxscore_helper(boxscores)
     outbound_array = []
