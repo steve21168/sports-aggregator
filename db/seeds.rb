@@ -71,7 +71,7 @@ Team.create!([
   {team_name: "Knicks", abbreviation: "NYK", city: "New York", state: "New York", country: "USA", logo: "http://content.sportslogos.net/logos/6/216/thumbs/2nn48xofg0hms8k326cqdmuis.gif", league_id:2},
   {team_name: "Thunder", abbreviation: "OKC", city: "Oklahoma City", state: "Oklahoma", country: "USA", logo: "http://content.sportslogos.net/logos/6/2687/thumbs/khmovcnezy06c3nm05ccn0oj2.gif", league_id:2},
   {team_name: "Magic", abbreviation: "ORL", city: "Orlando", state: "Florida", country: "USA", logo: "http://content.sportslogos.net/logos/6/217/thumbs/wd9ic7qafgfb0yxs7tem7n5g4.gif", league_id:2},
-  {team_name: "76ers", abbreviation: "PHI", city: "Philadelphia", state: "Pennsylvania", country: "USA", logo: "http://content.sportslogos.net/logos/6/217/thumbs/wd9ic7qafgfb0yxs7tem7n5g4.gif", league_id:2},
+  {team_name: "Sixers", abbreviation: "PHI", city: "Philadelphia", state: "Pennsylvania", country: "USA", logo: "http://content.sportslogos.net/logos/6/217/thumbs/wd9ic7qafgfb0yxs7tem7n5g4.gif", league_id:2},
   {team_name: "Suns", abbreviation: "PHX", city: "Phoenix", state: "Arizona", country: "USA", logo: "http://content.sportslogos.net/logos/6/238/thumbs/23843702014.gif", league_id:2},
   {team_name: "Blazers", abbreviation: "POR", city: "Portland", state: "Washington", country: "USA", logo: "http://content.sportslogos.net/logos/6/239/thumbs/bahmh46cyy6eod2jez4g21buk.gif", league_id:2},
   {team_name: "Kings", abbreviation: "SAC", city: "Sacramento", state: "California", country: "USA", logo: "http://content.sportslogos.net/logos/6/240/thumbs/24040432017.gif", league_id:2},
