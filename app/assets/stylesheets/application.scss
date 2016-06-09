@@ -1,10 +1,11 @@
 @import "bootstrap";
 @import "scrolling-nav";
-@import url(https://fonts.googleapis.com/css?family=Aldrich);
-
+//@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:600);
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans);
 body {
-  font-family: 'Aldrich', sans-serif;
+  font-family: 'Droid Sans', sans-serif;
 }
+
 img.card-img-top.img-fluid.img-limit {
   height: auto;
   max-height: 80px;
