@@ -6,6 +6,6 @@ class ArticleFinder
   end
 
   def five_most_recent(source)
-    league.articles.order(created_at: 'desc').where(source: source).limit(5)
+    league.articles.where(source: source).last(5).reverse
   end
 end

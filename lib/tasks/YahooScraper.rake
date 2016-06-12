@@ -5,7 +5,7 @@ class YahooScraper
     doc = Nokogiri::HTML(open(url))
     league_obj = League.find_by(abbreviation: league)
 
-    doc.css('#mediasportstopheadlines a.title')[0..-2].each do |headline|
+    doc.css('#mediasportstopheadlines a.title')[0..-2].reverse.each do |headline|
       link = "http://sports.yahoo.com" + headline.attribute("href").value
       title = headline.children.text
       Article.create(title: title, url: link, league: league_obj, source: "yahoo")
@@ -13,10 +13,7 @@ class YahooScraper
   end
 
   def scrape_all_leagues
-    scrape_yahoo("NBA")
-    scrape_yahoo("NHL")
-    scrape_yahoo("MLB")
-    scrape_yahoo("NFL")
+    League.all.each { |league| scrape_yahoo(league.abbreviation) }
   end
 
   def self.run
