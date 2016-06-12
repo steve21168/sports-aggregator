@@ -4,7 +4,7 @@ class CBSScraper
     doc = Nokogiri::HTML(open(url))
     league_obj = League.find_by(abbreviation: league)
 
-    doc.css('ul li.article-list-stack-item a').each do |link|
+    doc.css('ul li.article-list-stack-item a').reverse.each do |link|
       title = link.children.css("h3").first.text.strip
       link =  "http://www.cbssports.com" + link.attributes["href"].value
       Article.create(title: title, url: link, league: league_obj, source: "cbs")
@@ -12,10 +12,7 @@ class CBSScraper
   end
 
   def scrape_all_leagues
-    scrape_cbs("NFL")
-    scrape_cbs("MLB")
-    scrape_cbs("NHL")
-    scrape_cbs("NBA")
+    League.all.each { |league| scrape_cbs(league.abbreviation) }
   end
 
   def self.run
